@@ -1,0 +1,87 @@
+import { Button, VerticalBox, HorizontalBox, Palette } from "std-widgets.slint";
+
+export component AppWindow inherits Window {
+    in-out property <string> qq-path: "";
+    in-out property <bool> installed;
+    callback install-bqqnt();
+    callback select-qqnt-path();
+
+    width: 220px;
+    height: 300px;
+    
+
+    VerticalBox {
+        Text {
+            text: "BetterUniv Installer";
+            height: 16px;
+        }
+
+        HorizontalBox {
+            HorizontalLayout {
+                Rectangle {
+                    background: Palette.background.brighter(0.4);
+                    min-width: 160px;
+                    min-height: 200px;
+                    border-radius: 6px;
+                
+                    VerticalLayout {
+                        padding: 10px;
+
+                        Text {
+                            text: "B*";
+                            font-size: 20px;
+                            font-weight: 700;
+                            horizontal-alignment: left;
+                            height: 30px;
+                        }
+    
+                        Text {
+                            text: "formerly BetterQQNT";
+                            font-size: 10px;
+                            font-weight: 500;
+                            opacity: 0.6;
+                            horizontal-alignment: left;
+                            height: 30px;
+                        }
+
+                        HorizontalLayout {
+                            padding-bottom: 100px;
+                            VerticalLayout {
+                                height: 15px;
+                                Text {
+                                    text: "QQNT 路径";
+                                    font-weight: 600;
+                                    opacity: 0.8;
+                                    
+                                }
+                                Text {
+                                    text: qq-path;
+                                    font-size: 13px;
+                                    overflow: TextOverflow.elide;
+                                }
+                            }
+                            Button {
+                                text: "选择";
+                                clicked => {
+                                    select-qqnt-path();
+                                    installed = false
+                                }
+                            }
+                        }
+
+                        
+
+                        Button {
+                            text: installed ? "已安装" : "安装/更新";
+                            height: 30px;
+                            
+                            clicked => {
+                                install-bqqnt();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

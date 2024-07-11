@@ -1,0 +1,21 @@
+[package]
+name = "better-univ-installer"
+version = "0.1.0"
+authors = ["MicroBlock <66859419+MicroCBer@users.noreply.github.com>"]
+edition = "2021"
+build = "build.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[profile.release]
+strip = true
+opt-level = "z"
+lto = true
+codegen-units = 1
+panic = "abort"
+[dependencies]
+slint = "1.6"
+winreg = "0.52.0"
+anyhow = "*"
+native-dialog = "0.7.0"
+[build-dependencies]
+slint-build = "1.6"
