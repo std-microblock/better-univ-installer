@@ -23,7 +23,7 @@ fn main() -> Result<(), slint::PlatformError> {
     let uiw = ui.as_weak();
     ui.on_select_qqnt_path(move || {
         let path = FileDialog::new()
-            .add_filter("QQNT Executable", &["QQ.exe"])
+            .add_filter("QQNT Executable", &["exe"])
             .show_open_single_file();
         if let Ok(Some(path)) = path {
             uiw.upgrade().unwrap().set_qq_path(
